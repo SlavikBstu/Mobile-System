@@ -50,7 +50,7 @@
             android:id="@+id/editPassword"
             android:layout_weight="0.07"
             android:hint="Edit your password"
-            android:password="true"/>
+            android:password="true" />
 
         <Button
             android:text="Log in"

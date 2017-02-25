@@ -3,6 +3,7 @@ package com.example.apache.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +27,25 @@ public class LoginActivity extends AppCompatActivity {
 
         Login = (Button)findViewById(R.id.buttonLogin);
 
-        attempts = 5;
+        attempts = 6;
+
+        edPassword.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    if (!edPassword.getText().toString().equals("admin")) {
+                        LoginActivity.this.finish();
+                        return true;
+                    }
+                    else{
+                        startActivity(new Intent(LoginActivity.this, WelcomeActivity.class));
+                    }
+
+                }
+                return false;
+            }
+        });
     }
 
     public void login(View view) {
@@ -34,21 +53,19 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
             startActivity(intent);
         }
-        else {
-            if (editdist("admin", edPassword.getText().toString()) == 1) {
-                attempts--;
-                Toast.makeText(getApplicationContext(), "You have " + attempts + " attempts! Repeat, please", Toast.LENGTH_SHORT).show();
-                if (attempts == 0) {
-                    this.finish();
-                }
+        if (editdist("admin", edPassword.getText().toString()) == 1) {
+            attempts--;
+            Toast.makeText(getApplicationContext(), "You have " + attempts + " attempts! Repeat, please", Toast.LENGTH_SHORT).show();
+            if (attempts == 0) {
+                this.finish();
             }
-            if (editdist("admin", edPassword.getText().toString()) > 1) {
-                int second_attempts = attempts - 3;
-                Toast.makeText(getApplicationContext(), "You have " + second_attempts + " attempts! Repeat, please", Toast.LENGTH_SHORT).show();
-                attempts--;
-                if (attempts <= 2) {
-                    this.finish();
-                }
+        }
+        if (editdist("admin", edPassword.getText().toString()) > 1) {
+            int second_attempts = attempts - 3;
+            Toast.makeText(getApplicationContext(), "You have " + second_attempts + " attempts! Repeat, please", Toast.LENGTH_SHORT).show();
+            attempts--;
+            if (attempts <= 2) {
+                this.finish();
             }
         }
     }
