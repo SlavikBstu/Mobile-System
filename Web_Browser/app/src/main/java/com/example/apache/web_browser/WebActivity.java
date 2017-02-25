@@ -19,8 +19,9 @@ public class WebActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String addr = intent.getExtras().getString("addr");
         String address = intent.getExtras().getString("address");
+        String url = intent.getExtras().getString("url");
         web.loadData(address, "text/html", "en_US");
         web.loadUrl(addr);
-
+        web.loadUrl(url);
     }
 }

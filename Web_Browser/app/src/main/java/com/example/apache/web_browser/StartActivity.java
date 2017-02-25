@@ -20,7 +20,7 @@ public class StartActivity extends AppCompatActivity {
 
         listOfSite = (ListView)findViewById(R.id.ListOfSites);
         final String[] siteNames  = new String[]{
-                "My Web-Site", "Another Web-Site"
+                "My Web-Site", "Another Web-Site", "WebViewClient"
         };
 
         listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, siteNames);
@@ -35,7 +35,7 @@ public class StartActivity extends AppCompatActivity {
                     intent.putExtra("addr", address);
                     startActivity(intent);
                 }
-                if(position == 1){
+                if (position == 1){
                     String address = "<body>\n" +
                             "<h1><center><br><br>\n" +
                             "Second way!!!!\n" +
@@ -46,6 +46,11 @@ public class StartActivity extends AppCompatActivity {
                     intent.putExtra("address", address);
                     startActivity(intent);
                 }
+                if (position == 2){
+                    String url = "http://javadevblog.com";
+                    Intent intent = new Intent(StartActivity.this, WebActivity.class);
+                    intent.putExtra("url", url);
+                    startActivity(intent);                }
             }
         });
 
