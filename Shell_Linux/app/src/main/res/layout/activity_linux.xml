@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.apache.shell_linux.LinuxActivity">
+    tools:context="com.example.apache.shell_linux.LinuxActivity"
+    android:background="@android:color/black">
 
     <LinearLayout
         android:orientation="vertical"
@@ -16,7 +17,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        >
 
         <TextView
             android:text="Shell Executer"
@@ -24,7 +26,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/titleView"
             android:textAlignment="center"
-            android:textStyle="normal|bold" />
+            android:textStyle="normal|bold"
+            android:textColor="@android:color/white"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -32,7 +35,8 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/editCommand"
-            android:hint="Edit command" />
+            android:hint="Edit command"
+            android:background="@android:color/white"/>
 
         <Button
             android:text="Execute"
@@ -48,7 +52,8 @@
                     android:text="Executing command: "
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
-                    android:id="@+id/infoView" />
+                    android:id="@+id/infoView"
+                    android:textColor="@android:color/white"/>
         </ScrollView>
 
     </LinearLayout>

@@ -29,6 +29,9 @@ public class LinuxActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ShellExecuter shellExecuter = new ShellExecuter();
                 command = edCommand.getText().toString();
+                if (command.equals("cls")){
+                    info.setText("");
+                }
                 String output = shellExecuter.Executer(command);
                 info.setText(info.getText() + "\n" + output);
                 Log.d("Output", output);
