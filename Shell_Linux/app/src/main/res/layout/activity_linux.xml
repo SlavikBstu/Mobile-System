@@ -36,7 +36,7 @@
             android:ems="10"
             android:id="@+id/editCommand"
             android:hint="Edit command"
-            android:background="@android:color/white"/>
+            />
 
         <Button
             android:text="Execute"

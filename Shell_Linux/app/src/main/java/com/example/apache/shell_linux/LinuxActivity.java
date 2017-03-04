@@ -13,7 +13,7 @@ public class LinuxActivity extends AppCompatActivity {
     EditText edCommand;
     Button execute;
     TextView info;
-    String command;
+    String[] command;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +27,21 @@ public class LinuxActivity extends AppCompatActivity {
         execute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShellExecuter shellExecuter = new ShellExecuter();
-                command = edCommand.getText().toString();
-                if (command.equals("cls")){
-                    info.setText("");
+                try {
+                    ShellExecuter shellExecuter = new ShellExecuter();
+                    command[0] = edCommand.getText().toString();
+                    if (command.equals("cls")) {
+                        info.setText("");
+                    }
+                    //command = new String[]{"cat", "/proc/net/arp"};
+                    //command = new String[]{ "cat", "/system/etc/permissions/handheld_core_hardware.xml" };
+                    String output = shellExecuter.Executer(command);
+                    info.setText(info.getText() + "\n" + output + "\n" + "------------------------");
+                    Log.d("Output", output);
+                    edCommand.setText("");
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
-                String output = shellExecuter.Executer(command);
-                info.setText(info.getText() + "\n" + output);
-                Log.d("Output", output);
             }
         });
 
