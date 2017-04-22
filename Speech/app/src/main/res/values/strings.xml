@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Speech</string>
+    <string-array name="lang">
+        <item>English</item>
+        <item>German</item>
+        <item>Chinese</item>
+    </string-array>
+</resources>
